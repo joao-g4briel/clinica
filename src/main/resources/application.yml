@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: clinica
+  profiles:
+    active: oracle
+
+  jpa:
+    show-sql: true
+    open-in-view: false
