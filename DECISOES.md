@@ -11,8 +11,7 @@
 ## O que priorizei
 
 Priorizei as regras de negócio obrigatórias (conflito de horário, 
-data no passado, cancelamento com motivo) e a estrutura limpa em camadas. 
-Depois implementei o front-end Angular e o portal do médico como diferencial.
+data no passado, cancelamento com motivo) e a estrutura limpa em camadas.
 
 ## O que ficou de fora
 
