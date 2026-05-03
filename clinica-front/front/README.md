@@ -1,59 +1,111 @@
-# Front
+# Clínica Front-end
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Interface web desenvolvida em **Angular 17+** para consumo da [API Clínica](https://github.com/joao-g4briel/clinica).
 
-## Development server
+---
 
-To start a local development server, run:
+## Tecnologias
+
+- Angular 17+
+- TypeScript
+- HttpClient
+- Angular Router
+
+---
+
+## Pré-requisitos
+
+- Node.js 18+
+- Angular CLI
 
 ```bash
+npm install -g @angular/cli
+```
+
+---
+
+## Como rodar
+
+```bash
+# Clone o repositório
+git clone https://github.com/joao-g4briel/clinica.git
+
+# Entre na pasta do front
+cd clinica/clinica-front/front
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse: [http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+> A API precisa estar rodando em `http://localhost:8080` antes de iniciar o front.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
+## Estrutura do projeto
+
+```
+src/app/
+├── models/
+│   ├── paciente.model.ts
+│   ├── agendamento.model.ts
+│   └── profissional.model.ts
+├── services/
+│   ├── paciente.service.ts
+│   ├── agendamento.service.ts
+│   └── profissional.service.ts
+├── pages/
+│   ├── pacientes/
+│   │   └── pacientes.component.ts
+│   └── agendamentos/
+│       └── agendamentos.component.ts
+├── app.ts
+├── app.routes.ts
+└── app.config.ts
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## Funcionalidades
+
+### Pacientes
+- Cadastrar paciente com validação de campos
+  - Nome: apenas letras
+  - CPF: formato `000.000.000-00` com máscara automática
+  - E-mail: validação de formato
+  - Telefone: formato `(00) 00000-0000` com máscara automática
+- Listar pacientes com busca por nome ou CPF
+
+### Agendamentos
+- Criar agendamento com busca de paciente e profissional por nome
+- Listar agendamentos com filtros por paciente, profissional e status
+- Cancelar agendamento com motivo via modal
+
+---
+
+## Rotas
+
+| Rota | Componente | Descrição |
+|---|---|---|
+| `/pacientes` | PacientesComponent | Cadastro e listagem de pacientes |
+| `/agendamentos` | AgendamentosComponent | Criação, listagem e cancelamento de agendamentos |
+
+---
+
+## Configuração da API
+
+A URL base da API está definida nos services. Caso a API rode em outra porta, atualize os arquivos:
+
+```
+src/app/services/paciente.service.ts
+src/app/services/agendamento.service.ts
+src/app/services/profissional.service.ts
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+```typescript
+private readonly API = 'http://localhost:8080/pacientes';
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
